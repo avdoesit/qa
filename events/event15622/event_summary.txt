@@ -1,0 +1,4 @@
+[
+{"id": 1, "text": "pop", "userId": 1, "upvotes": 0, "color": 0, "answered": 0, "deleted": 1, "sorting": 1},
+{"id": 2, "text": "here is a question", "userId": 0, "upvotes": 1, "color": 0, "answered": 0, "deleted": 1, "sorting": 2}
+]
