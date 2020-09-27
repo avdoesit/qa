@@ -4,21 +4,21 @@
 // Copyright 2019 Thorsten Thormaehlen
 // Contact: www.thormae.de
 
-// Permission is hereby granted, free of charge, to any person obtaining a copy 
-// of this software and associated documentation files (the "Software"), to deal 
-// in the Software without restriction, including without limitation the rights 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
 // of the Software, and to permit persons to whom the Software is furnished to
 // do so, subject to the following conditions:
 
-// The above copyright notice and this permission notice shall be included in all 
+// The above copyright notice and this permission notice shall be included in all
 // copies or substantial portions of the Software.
 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR 
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR
 // A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
 // HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 $userDataDir = "./events/";
@@ -56,52 +56,52 @@ function adminCommand($dir, $command, $selected) {
   if (!file_exists($dir . "/event_questions.txt")) {
     return;
   }
-  
+
   $selElements = explode(",", $selected);
   $selCount = count($selElements);
-  
+
   $questions = my_file_get_contents($dir . "/event_questions.txt", LOCK_EX);
   $lines = explode("\n", $questions);
   $length = count($lines);
-  
+
   $output = "";
   for($i=0; $i < $length; $i++) {
     $parts = explode(",", $lines[$i]);
     if(count($parts) >= 7) {
-      
+
       $found = false;
       for($j=0; $j < $selCount; $j++) {
         if(intval($parts[0]) == intval($selElements[$j])) {
           $found = true;
         }
       }
-      
+
       if(intval($command) >= 0 && intval($command) < 5 && $found) {
         $parts[3] = intval($command);
       }
-      
+
       if($command == "5" && $found) { // delete
         $parts[5] = 1;
       }
       if($command == "6" && $found) { // answered
         $parts[4] = 1;
       }
-      
+
       if($command == "7") { // answered
         $parts[1] = base64_encode("wiped");
         $parts[5] = 1;
       }
-      
+
       $output .= $parts[0] . "," . $parts[1] . "," . $parts[2] . "," . $parts[3] . "," . $parts[4] . "," .  $parts[5] . "," . $parts[6] . "\n";
     }
-    
+
   }
   file_put_contents($dir . "/event_questions.txt", $output, LOCK_EX);
-  
+
 }
 
 function createEventSummary($dir, $Wait) {
-  
+
   if (!is_dir($dir)) {
     return;
   }
@@ -111,7 +111,7 @@ function createEventSummary($dir, $Wait) {
   if (!file_exists($dir . "/event_questions.txt")) {
     return;
   }
-  
+
   if ($Wait) {
     $secondsTillNextUpdate = 8;
     if ((time() - filemtime($dir . "/event_summary.txt")) < $secondsTillNextUpdate) {
@@ -120,9 +120,9 @@ function createEventSummary($dir, $Wait) {
   }
 
   $questions = my_file_get_contents($dir . "/event_questions.txt", LOCK_EX);
-  
+
   $lines = explode("\n", $questions);
- 
+
   $output = "[\n";
   $length = count($lines);
 
@@ -163,9 +163,9 @@ function createEventSummary($dir, $Wait) {
         $output .= ",\n";
       }
       $upvotes = $counters[$i];
-      
+
       $text = str_replace('"', '\"', base64_decode($parts[1]));
-      
+
       $output .= '{';
       $output .= '"id": ' . $parts[0] . ', ';
       $output .= '"text": '   . json_encode($text) . ', ';
@@ -185,15 +185,15 @@ function createEventSummary($dir, $Wait) {
 }
 
 // read initial post parameters that are required by all request types
-$event = filter_input(INPUT_POST, 'eventNumber', FILTER_VALIDATE_INT);
-$requestType = filter_input(INPUT_POST, 'requestType', FILTER_VALIDATE_INT);
-$userId = filter_input(INPUT_POST, 'userId', FILTER_VALIDATE_INT);
-$questionColor = filter_input(INPUT_POST, 'questionColor', FILTER_VALIDATE_INT);
-$upvoteQuestionId =  filter_input(INPUT_POST, 'upvoteQuestionId', FILTER_VALIDATE_INT);
-$command =  filter_input(INPUT_POST, 'command', FILTER_VALIDATE_INT);
-$selected =  filter_input(INPUT_POST, 'selected');
-$password = filter_input(INPUT_POST, 'adminPassword');
-$questionText =  filter_input(INPUT_POST, 'questionText');
+$event = filter_input(INPUT_GET, 'eventNumber', FILTER_VALIDATE_INT);
+$requestType = filter_input(INPUT_GET, 'requestType', FILTER_VALIDATE_INT);
+$userId = filter_input(INPUT_GET, 'userId', FILTER_VALIDATE_INT);
+$questionColor = filter_input(INPUT_GET, 'questionColor', FILTER_VALIDATE_INT);
+$upvoteQuestionId =  filter_input(INPUT_GET, 'upvoteQuestionId', FILTER_VALIDATE_INT);
+$command =  filter_input(INPUT_GET, 'command', FILTER_VALIDATE_INT);
+$selected =  filter_input(INPUT_GET, 'selected');
+$password = filter_input(INPUT_GET, 'adminPassword');
+$questionText =  filter_input(INPUT_GET, 'questionText');
 
 
 
@@ -211,9 +211,9 @@ $eventDir = "event" . $event;
 $dateStr = date("[Y/m/d G:i:s]");
 
 if ($requestType == "1") { // create event as admin (lecturer)
-  
+
   cleanUpOldEvents($userDataDir, $dateStr);
-  
+
   // encrypt password
   $passwordHash = "";
   if (!empty($password)) {
@@ -227,26 +227,26 @@ if ($requestType == "1") { // create event as admin (lecturer)
   if (is_dir($userDataDir . $eventDir)) {
     die('An event with number ' . $event . ' already exists. Press &quot;Open&quot; or choose a different event number.');
   } else {
-    
+
     if(empty($passwordHash)) {
       die('Please enter a password.');
     }
-    
+
     mkdir($userDataDir . $eventDir, 0777, true);
     file_put_contents($userDataDir . $eventDir . "/event_passwort.txt", $passwordHash, LOCK_EX);
     touch($userDataDir . $eventDir . "/event_users.txt");
     touch($userDataDir . $eventDir . "/event_questions.txt");
     touch($userDataDir . $eventDir . "/event_summary.txt");
-    
+
     file_put_contents($userDataDir . "clicker.log", $dateStr . "\t" . "Create: Event with name " . $eventDir . " created \n", FILE_APPEND | LOCK_EX);
     echo "Success";
   }
 }
 
 if ($requestType == "2") { // open event as admin (lecturer)
-  
+
   cleanUpOldEvents($userDataDir, $dateStr);
-  
+
   // encrypt password
   $passwordHash = "";
   if (!empty($password)) {
@@ -256,13 +256,13 @@ if ($requestType == "2") { // open event as admin (lecturer)
   if (empty($passwordHash)) {
     die('Please enter a password.');
   }
-  
+
   if (!is_dir($userDataDir . $eventDir)) {
     die('An event with number ' . $event . ' does not exist. Events are automatically deleted eight days after their creation. Press &quot;Create&quot; if you like to generate a new event.');
   }
 
   $readpasswordHash = my_file_get_contents($userDataDir . $eventDir . "/event_passwort.txt", LOCK_EX);
-    
+
   if($readpasswordHash === $passwordHash) {
     echo "Success";
   }else{
@@ -272,14 +272,14 @@ if ($requestType == "2") { // open event as admin (lecturer)
 
 if ($requestType == "3") { // get event data (admin and students)
   $dir = $userDataDir . $eventDir;
-  
+
   if (!is_dir($dir)) {
       die('An event with number ' . $event . ' does not exist.');
   } else {
 
     // create new summery file if time is up
     createEventSummary($userDataDir.$eventDir, true);
-    
+
     $summaryFile = $dir . "/event_summary.txt";
     if (!file_exists($summaryFile)) {
       die('Internal error: can not open ' . $summaryFile);
@@ -292,23 +292,23 @@ if ($requestType == "4") { // add new question (admin and students)
   if (!is_dir($userDataDir . $eventDir)) {
     die('A event with number ' . $event . ' does not exist.');
   } else {
-    
+
     $questionFile = $userDataDir . $eventDir . "/event_questions.txt";
     $readquestions = my_file_get_contents($questionFile, LOCK_EX);
     $count = substr_count($readquestions, "\n" );
-    $count += 1;  
-    
+    $count += 1;
+
     $sorting = $count;
     $answered = 0;
     $deleted = 0;
-    
+
     $output = $count . "," . base64_encode($questionText) . "," . $userId . "," . $questionColor . "," . $answered . "," . $deleted . "," . $sorting . "\n";
-   
+
     file_put_contents($questionFile, $output , FILE_APPEND | LOCK_EX);
-    
+
     // create new summery file immediately
     $summary = createEventSummary($userDataDir.$eventDir, false);
-    
+
     echo "Success:" . $count . ":" . $summary;
   }
 }
@@ -317,7 +317,7 @@ if ($requestType == "5") { // upvote
   if (!is_dir($userDataDir . $eventDir)) {
     die('A event with number ' . $event . ' does not exist.');
   } else {
-     $voteFileName = "vote_" . $upvoteQuestionId . "_" . $userId . ".txt"; 
+     $voteFileName = "vote_" . $upvoteQuestionId . "_" . $userId . ".txt";
 
     touch($userDataDir . $eventDir . "/" . $voteFileName);
     echo "Success:" . $voteFileName;
@@ -328,18 +328,18 @@ if ($requestType == "6") { // student enter
   if (!is_dir($userDataDir . $eventDir)) {
     die('An event with number ' . $event . ' does not exist. Press the &quot;Admin&quot; button if you like to create a new event with this number.');
   } else {
-    
+
     $readusers = my_file_get_contents($userDataDir . $eventDir . "/event_users.txt", LOCK_EX);
     $count = substr_count($readusers, "student" );
     $count += 1;
     file_put_contents($userDataDir . $eventDir . "/event_users.txt", "student". $count . "\n", FILE_APPEND | LOCK_EX);
-    
+
     echo "Success:" . $count;
   }
 }
 
 if ($requestType == "7") { // admin command on selection
-  
+
   // encrypt password
   $passwordHash = "";
   if (!empty($password)) {
@@ -352,7 +352,7 @@ if ($requestType == "7") { // admin command on selection
     die('An event with number ' . $event . ' does not exist.');
   }
   $readpasswordHash = my_file_get_contents($userDataDir . $eventDir . "/event_passwort.txt", LOCK_EX);
-    
+
   if ($readpasswordHash !== $passwordHash) {
     die('Wrong admin password received.');
   }
@@ -361,7 +361,7 @@ if ($requestType == "7") { // admin command on selection
 
   // create new summery file immediately
   $summary = createEventSummary($userDataDir.$eventDir, false);
-  
+
   echo "Success:" . $summary;
 }
 

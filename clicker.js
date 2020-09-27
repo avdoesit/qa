@@ -131,7 +131,7 @@ function adminOpenEvent(create) {
   setLoading(true);
   $.ajax({
     url: "clicker.php",
-    type: "post",
+    type: "get",
     data: dataStr,
     success: function (response) {
       setLoading(false);
@@ -172,7 +172,7 @@ function studentEnter(e, eventNum) {
   setLoading(true);
   $.ajax({
     url: "clicker.php",
-    type: "post",
+    type: "get",
     data: "eventNumber=" + eventNo + "&requestType=6",
     success: function (response) {
       setLoading(false);
@@ -246,7 +246,7 @@ function handleQuestionClick(id) {
           var postData = "eventNumber=" + user.eventNumber + "&userId=" + user.userId + "&upvoteQuestionId=" + questionId + "&requestType=5";
           $.ajax({
             url: "clicker.php",
-            type: "post",
+            type: "get",
             data: postData,
             success: function (response) {
               var good = false;
@@ -487,7 +487,7 @@ function getEventData() {
   showWidget(2);
   $.ajax({
     url: "clicker.php",
-    type: "post",
+    type: "get",
     data: "eventNumber=" + user.eventNumber + "&requestType=3",
     success: function (response) {
       var good = false;
@@ -546,7 +546,7 @@ function submitQuestion() {
   setLoading(true);
   $.ajax({
     url: "clicker.php",
-    type: "post",
+    type: "get",
     data: "eventNumber=" + user.eventNumber + "&userId=" + user.userId + "&questionText=" + encodeURIComponent(text) + "&questionColor=" + user.selectedQuestionColor + "&requestType=4",
     success: function (response) {
       setLoading(false);
@@ -607,7 +607,7 @@ function adminCommandOnSelection(command) {
   setLoading(true);
   $.ajax({
     url: "clicker.php",
-    type: "post",
+    type: "get",
     data: dataStr,
     success: function (response) {
       setLoading(false);
