@@ -1,5 +1,8 @@
 <?php
 $ip = $_SERVER['REMOTE_ADDR']; echo $ip;
+
+// ONLY allow IP of the netlify?
+
 if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
 
 ?>
