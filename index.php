@@ -1,5 +1,5 @@
 <?php
-
+echo $_SERVER['REMOTE_ADDR'];
 if ($_GET['e'] || $_GET['p'] == 'AllsVatsDude*8') {
 
 ?>
