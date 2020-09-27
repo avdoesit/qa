@@ -1,5 +1,6 @@
 <?php
-echo $_SERVER['REMOTE_ADDR'];
+$ip = $_SERVER['REMOTE_ADDR']; echo $ip;
+
 if ($_GET['e'] || $_GET['p'] == 'AllsVatsDude*8') {
 
 ?>
