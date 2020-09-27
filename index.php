@@ -1,7 +1,17 @@
 <?php
 $ip = $_SERVER['REMOTE_ADDR']; echo $ip;
+if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
 
-if ($_GET['e'] || $_GET['p'] == 'AllsVatsDude*8') {
+?>
+
+<form action="" method="post">
+  <input type="text" name="p">
+  <button>DO IT</button>
+</form>
+
+<?php
+
+} else {
 
 ?>
 
