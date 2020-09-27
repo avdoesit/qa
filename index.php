@@ -1,3 +1,9 @@
+<?php
+
+if ($_GET['e'] || $_GET['p'] == 'AllsVatsDude*8') {
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -351,3 +357,5 @@
 </body>
 
 </html>
+
+<?php } ?>

@@ -880,4 +880,8 @@ function setLoading(state) {
   }
 }
 
-if (location.search) studentEnter(null, location.search.split("=")[1]);
+if (location.search) {
+  // var searchParams = Object.fromEntries(location.search.slice(1).split("=").map(pair => pair.split("=")));
+  var param = location.search.slice(1).split("=");
+  if (param[0] === "e") studentEnter(null, param[1]);
+}
