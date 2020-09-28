@@ -193,7 +193,7 @@ $upvoteQuestionId =  filter_input(INPUT_GET, 'upvoteQuestionId', FILTER_VALIDATE
 $command =  filter_input(INPUT_GET, 'command', FILTER_VALIDATE_INT);
 $selected =  filter_input(INPUT_GET, 'selected');
 $password = filter_input(INPUT_GET, 'adminPassword');
-$questionText =  filter_input(INPUT_GET, 'questionText');
+$questionText =  filter_input(INPUT_GET, 'questionText', FILTER_SANITIZE_STRING);
 
 
 

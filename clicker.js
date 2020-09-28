@@ -431,27 +431,27 @@ function generateEventOutput(resultStr) {
         }
 
         html += "<div id='question" + results[i].id + "' class='question' style='background-color:#" + colorCss + ";' onclick='handleQuestionClick(this.id)'>";
-        html += "  <div class='outerContainer" + selected + "'>";
-        html += "    <div class='upvoteNumber'><span class='ui-button-icon ui-icon ui-icon-star'></span>&nbsp;";
+        // html += "  <div class='outerContainer" + selected + "'>";
+        html += "    <div class='upvoteNumber'>";
         html += "      <span id='num_question" + results[i].id + "'>" + results[i].upvotes + "</span>";
         html += "    </div>";
 
-        html += "    <div class='upvotedContainter'>";
-        html += "      <span id='upvote_question" + results[i].id + "' class='ui-button-icon ui-icon ui-icon-heart " + hiddenHeart + "' title='You have upvoted this question'></span>";
-        html += "    </div>";
+        // html += "    <div class='upvotedContainter'>";
+        // html += "      <span id='upvote_question" + results[i].id + "' class='ui-button-icon ui-icon ui-icon-heart " + hiddenHeart + "' title='You have upvoted this question'></span>";
+        // html += "    </div>";
 
-        html += "    <div class='answeredContainer'>";
-        html += "      <span id='answered_question" + results[i].id + "' class='ui-button-icon ui-icon ui-icon-check " + hiddenAnswered + "' title='The question was answered'></span>";
-        html += "    </div>";
+        // html += "    <div class='answeredContainer'>";
+        // html += "      <span id='answered_question" + results[i].id + "' class='ui-button-icon ui-icon ui-icon-check " + hiddenAnswered + "' title='The question was answered'></span>";
+        // html += "    </div>";
 
-        html += "    <div class='submittedContainer'>";
-        html += "      <span id='submitted_question" + results[i].id + "' class='ui-button-icon ui-icon ui-icon-person " + hiddenSubmitted + "' title='This question was submitted by you'></span>";
-        html += "    </div>";
+        // html += "    <div class='submittedContainer'>";
+        // html += "      <span id='submitted_question" + results[i].id + "' class='ui-button-icon ui-icon ui-icon-person " + hiddenSubmitted + "' title='This question was submitted by you'></span>";
+        // html += "    </div>";
 
         html += "    <div class='innerContainer " + ss + "'>";
         html += text;
         html += "    </div>";
-        html += "  </div>";
+        // html += "  </div>";
         html += "</div>";
       }
     }

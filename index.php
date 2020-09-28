@@ -1,7 +1,4 @@
 <?php
-$ip = $_SERVER['REMOTE_ADDR']; echo $ip;
-
-// ONLY allow IP of the netlify? Won't work.
 
 if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
 
@@ -207,14 +204,14 @@ if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
     <!-- new question dialog -->
     <div id="newQuestionDialog" title="Create a new question or comment">
       <div class="questionContainer">
-        <div id="questionPreview" class="questionInaktiv">
+        <!-- <div id="questionPreview" class="questionInaktiv">
           <div class="outerContainer">
             <div class="innerContainer">
               <span id="questionPreviewContent"></span>
             </div>
 
           </div>
-        </div>
+        </div> -->
       </div>
       <div id="newQuestionLengthDiv">
         <span id="textLength">0</span>/230
@@ -223,7 +220,7 @@ if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
         <input type="text" id="newQuestionText" name="newQuestionTextName" maxlength="230" tabindex="1">
       </div>
 
-      <div id="controlgroup4Container">
+      <!-- <div id="controlgroup4Container">
         <div id="controlgroup4" class="largeTopMargin">
           <button id="colorButtonNewQ0"
             class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
@@ -236,7 +233,7 @@ if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
           <button id="colorButtonNewQ4"
             class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
         </div>
-      </div>
+      </div> -->
       <div id="submitQuestionError" class="smallTopMargin errorMsg">
       </div>
 
@@ -324,7 +321,7 @@ if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
                   </div>
                 </div>
 
-                <div class="menublock">
+                <!-- <div class="menublock">
                   <div class="smaller menuTitleElement">Color:</div>
                   <div id="controlgroup3">
                     <button id="colorButtonMenu0"
@@ -338,7 +335,7 @@ if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
                     <button id="colorButtonMenu4"
                       class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -351,9 +348,9 @@ if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
   </div>
 
   <!-- loadingMaskID -->
-  <div id="loadingMaskID" class="loadingMaskHidden">
+  <!-- <div id="loadingMaskID" class="loadingMaskHidden">
     <img class="overlayLoadingImg" alt="loading" src="./loading.svg" />
-  </div>
+  </div> -->
 </body>
 
 </html>
