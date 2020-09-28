@@ -288,25 +288,25 @@ function handleQuestionClick(id) {
   }
 }
 
-function handleColorButtonClick(event) {
-  var id = event.currentTarget.id;
-  if (id.substring(0, 15) === "colorButtonMenu") {
-    var numStr = id.substring(15);
-    var num = parseInt(numStr);
-    if (!isNaN(num)) {
-      var color = questionsColors[num];
-    }
-  }
-  if (id.substring(0, 15) === "colorButtonNewQ") {
-    var numStr = id.substring(15);
-    var num = parseInt(numStr);
-    if (!isNaN(num)) {
-      var color = questionsColors[num];
-      $("#questionPreview").css("background-color", "#" + color);
-      user.selectedQuestionColor = num;
-    }
-  }
-}
+// function handleColorButtonClick(event) {
+//   var id = event.currentTarget.id;
+//   if (id.substring(0, 15) === "colorButtonMenu") {
+//     var numStr = id.substring(15);
+//     var num = parseInt(numStr);
+//     if (!isNaN(num)) {
+//       var color = questionsColors[num];
+//     }
+//   }
+//   if (id.substring(0, 15) === "colorButtonNewQ") {
+//     var numStr = id.substring(15);
+//     var num = parseInt(numStr);
+//     if (!isNaN(num)) {
+//       var color = questionsColors[num];
+//       $("#questionPreview").css("background-color", "#" + color);
+//       user.selectedQuestionColor = num;
+//     }
+//   }
+// }
 
 function getQuesitonTextScaling(text) {
   var ss = "larger";
