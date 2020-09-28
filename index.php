@@ -1,7 +1,7 @@
 <?php
 $ip = $_SERVER['REMOTE_ADDR']; echo $ip;
 
-// ONLY allow IP of the netlify?
+// ONLY allow IP of the netlify? Won't work.
 
 if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
 
@@ -24,18 +24,6 @@ if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description"
-    content="Post and vote for questions or messages using mobile phones or other internet devices during large lectures, classes, meetups, or conferences: free-of-charge, anonymous, ad-free, easy-to-use." />
-  <meta name="keywords"
-    content="free web-based question voting, interactive Q&A plattform, free temporary online group chat, real-time questions, online audience questions" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="OnlineQuestions.org: A free online tool to ask and upvote questions" />
-  <meta property="og:description"
-    content="Post and vote for questions or messages using mobile phones or other internet devices during large lectures, classes, meetups, or conferences: free-of-charge, anonymous, ad-free, easy-to-use." />
-  <meta property="og:image" content="https://onlinequestions.org/linkimg.jpg" />
-
-  <title>OnlineQuestions.org: A free online tool to ask and upvote questions</title>
-  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 
   <!-- include external libraries (start) -->
   <!-- MIT license https://jquery.org/license/ -->
@@ -59,8 +47,6 @@ if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
           <span class="myTitle">OnlineQuestions.org</span><br>
           <span class="mySubTitle smaller">Live online questions for large events: free-of-charge, anonymous, ad-free,
             easy-to-use</span>
-          <!--<span class="mySubTitle smaller errorMsg">Warning: Due to high demand, our server is currently struggling to keep up with the traffic.
-              You can help reducing the server load by closing the browser tab when your event is finished.</span>-->
         </div>
 
         <hr class="mediumTopMargin">
@@ -290,12 +276,12 @@ if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
         <div id="studentTools" class="bitLarger">
 
 
-          <select id="studentSortingSelect">
+          <!-- <select id="studentSortingSelect">
             <option value="0" selected>Sort by Votes</option>
             <option value="1">Sort by Newest</option>
             <option value="2">Sort by Color</option>
             <option value="3">Sort by User</option>
-          </select>
+          </select> -->
           <button id="studentNew">New</button>
 
         </div>
