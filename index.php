@@ -223,7 +223,7 @@ if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
         <input type="text" id="newQuestionText" name="newQuestionTextName" maxlength="230" tabindex="1">
       </div>
 
-      <!-- <div id="controlgroup4Container">
+      <div id="controlgroup4Container">
         <div id="controlgroup4" class="largeTopMargin">
           <button id="colorButtonNewQ0"
             class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
@@ -236,7 +236,7 @@ if (!($_GET['e'] || $_POST['p'] == 'AllsVatsDude*8')) {
           <button id="colorButtonNewQ4"
             class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
         </div>
-      </div> -->
+      </div>
       <div id="submitQuestionError" class="smallTopMargin errorMsg">
       </div>
 

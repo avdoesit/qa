@@ -18,20 +18,17 @@
     /*border: 1px solid #909090;*/
 }
 
-body { background: white; color: #000000; font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 100%; line-height: 1.1; margin: 0px;
-
-  width: 100%}
+body {width: 100%; background: white; color: #000000; margin: 0px; font-family: 'IBM Plex Sans', sans-serif; line-height: 1.1}
 
 .mainWidgetCommon {margin-left: auto; margin-right: auto;}
-.myWidget {padding: 20px;}
+.myWidget {padding: 20px;} 
 #mainWidget { width: 600px; }
 #mainResultWidget { width: 100%; }
 @media only screen and (max-device-width:599px){ #mainWidget { width: 100%; } }
-/* .larger { font-size: 1.45em; }
+.larger { font-size: 1.45em; }
 .bitLarger { font-size: 1.15em; }
-.smaller{ font-size: 0.85em; }
-.tiny{ font-size: 0.65em; }  */
+.smaller{ font-size: 0.85em; } 
+.tiny{ font-size: 0.65em; } 
 .centeredImg { display: block; margin-left: auto; margin-right: auto; }
 .largeTopMargin { margin-top: 20px; }
 .hugeBottomMargin { margin-bottom: 100px; }
@@ -50,51 +47,58 @@ body { background: white; color: #000000; font-family: 'IBM Plex Sans', sans-ser
     margin-right: 15px;
 }
 
-.fieldPad{ padding-bottom: 20px; padding-left: 40px; padding-right: 40px;padding-top: 20px;}
+.fieldPad{padding-top: 20px; padding-left: 40px; padding-right: 40px; padding-bottom: 20px;}
 .myfield{
     /*border: 1px solid black; */
     border-radius: 10px;
-    -webkit-box-shadow: 1px 5px 5px #A0A0a0;
-    box-shadow: 1px 5px 5px #A0A0a0;
     overflow: hidden;
+    -webkit-box-shadow: 1px 5px 5px #A0A0a0;
+    box-shadow: 1px 5px 5px #A0A0a0;  
 }
 .myfieldHeader {
     background: #555555;
     color: white;
-    font-size: 1.45em;
-    font-style: italic;
-    padding-bottom: 10px;
+    padding-top: 10px;
     padding-left: 40px;
     padding-right: 20px;
-    padding-top: 10px;
+    padding-bottom: 10px;
+    font-style: italic;
+    font-size: 1.45em;
 }
 
 .errorMsg{ color: #e50101;}
-.answer{ background-color: #72dae7; font-size: 80px; height: 100px; margin-bottom: 10px; margin-left: auto; margin-right: auto; margin-top:10px; opacity:1.0; text-align: center;width: 80%;}
-.answerBar{ background-color: #72dae7; font-size: 80px;height: 100%; left: 0px; position: absolute; text-align: center; top: 0px;}
-.answerFrame{ background-color: white; border: 1px solid black; font-size: 40px; height: 100px; margin-bottom: 10px; margin-left: auto; margin-right: auto; margin-top:10px; opacity:1.0; position: relative; text-align: center;width: 80%;}
-.answerNumber{ left: 20px;position: absolute; top: 20px;}
-.answerPercent{position: absolute; right: 20px; top: 20px;}
+.answer{width: 80%; height: 100px; margin-left: auto; margin-right: auto; font-size: 80px; text-align: center; margin-top:10px; margin-bottom: 10px; opacity:1.0; background-color: #72dae7;}
+.answerBar{height: 100%; font-size: 80px; text-align: center; background-color: #72dae7; position: absolute; left: 0px; top: 0px;}
+.answerFrame{width: 80%; height: 100px; margin-left: auto; margin-right: auto; font-size: 40px; text-align: center; margin-top:10px; margin-bottom: 10px; opacity:1.0; background-color: white; border: 1px solid black; position: relative;}
+.answerNumber{position: absolute; left: 20px; top: 20px;}
+.answerPercent{position: absolute; right: 20px; top: 20px;} 
 .answer:hover { opacity:0.8;}
 .question {
-  background-color: transparent !important;
-  border: 1px solid;
-  font-size: 1.2rem;
+    width: 260px;
+    min-width: 260px;
+    height: 160px;
+    display: inline-block;
     margin: 5px;
-    padding: 1em;
+    background-color: #EBF09C;
+    padding: 10px;
+    border-radius: 20px;
+    overflow: hidden;
+    -webkit-box-shadow: 1px 5px 5px #A0A0a0;
+    box-shadow: 1px 5px 5px #A0A0a0;
 }
 
 .questionInaktiv {
+    width: 260px;
+    min-width: 260px;
+    height: 160px;
+    display: inline-block;
+    margin: 5px 5px 10px 5px;
+    background-color: #EBF09C;
+    padding: 10px;
     border-radius: 20px;
+    overflow: hidden;
     -webkit-box-shadow: 1px 5px 5px #A0A0a0;
     box-shadow: 1px 5px 5px #A0A0a0;
-    display: inline-block;
-    height: 160px;
-    margin: 5px 5px 10px 5px;
-    min-width: 260px;
-    overflow: hidden;
-    padding: 10px;
-    width: 260px;
 }
 
 .question:hover {
@@ -109,12 +113,22 @@ body { background: white; color: #000000; font-family: 'IBM Plex Sans', sans-ser
     /*border: 1px solid black;*/
 }
 
+.outerContainer {
+    display: table;
+    width: 100%; 
+    height:100%; 
+    overflow: hidden;
+    position: relative;
+}
+
 .innerContainer {
-    margin: 0 auto;
-    max-width: 30ch;
-    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
     width: 100%;
     word-wrap: break-word;
+    max-width: 200px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .toolbar {
@@ -122,43 +136,44 @@ body { background: white; color: #000000; font-family: 'IBM Plex Sans', sans-ser
 }
 
 .toolButton {
-    height:24px;
     width:24px;
+    height:24px;
 }
 
 #toolbarAdmin {
-    left: 20px;
     position: absolute;
     top: 20px;
+    left: 20px;
 }
 
 .questionContainer {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .upvoteNumber {
-  padding-bottom: 0.5em;
-  text-align: center;
+    position: absolute;
+    top: 0px;
+    left: 20px;
 }
 
 .upvotedContainter {
-    left: 200px;
     position: absolute;
     top: 0px;
+    left: 200px;
 }
 
 .answeredContainer {
-    left: 220px;
     position: absolute;
     top: 0px;
+    left: 220px;
 }
 
 .submittedContainer {
-    left: 180px;
     position: absolute;
     top: 0px;
+    left: 180px;
 }
 
 .smallerButtonText {
@@ -176,15 +191,15 @@ body { background: white; color: #000000; font-family: 'IBM Plex Sans', sans-ser
 }
 
 .colorSelect {
+    width: 16px;
+    height: 16px;
     border: 1px solid black;
     display: inline-block;
-    height: 16px;
-    width: 16px;
 }
 
 #newQuestion {
-    height: 2em;
     width: 200px;
+    height: 2em;
 }
 
 #newQuestionText {
@@ -199,8 +214,8 @@ body { background: white; color: #000000; font-family: 'IBM Plex Sans', sans-ser
 #newQuestionLengthDiv {
     display: block;
     margin: 0 auto;
-    text-align: center;
     width: 100px;
+    text-align: center;
 }
 
 .menuTitleElement {
@@ -208,44 +223,44 @@ body { background: white; color: #000000; font-family: 'IBM Plex Sans', sans-ser
 }
 
 .colorButtons {
-    height: 30px;
     width: 30px;
+    height: 30px;
 }
 
 .ui-button .ui-icon.colorButton0Icon {
-    background-image: linear-gradient(#EBF09C, #EBF09C);
-    border: solid #404040 1px;
-    border-radius: 4px;
-    height: 16px;
     width: 16px;
+    height: 16px;
+    background-image: linear-gradient(#EBF09C, #EBF09C);
+    border-radius: 4px;
+    border: solid #404040 1px;
 }
 .ui-button .ui-icon.colorButton1Icon {
-    background-image: linear-gradient(#99F0A1, #99F0A1);
-    border: solid #404040 1px;
-    border-radius: 4px;
-    height: 16px;
     width: 16px;
+    height: 16px;
+    background-image: linear-gradient(#99F0A1, #99F0A1);
+    border-radius: 4px;
+    border: solid #404040 1px;
 }
 .ui-button .ui-icon.colorButton2Icon {
-    background-image: linear-gradient(#A1F0EC, #A1F0EC);
-    border: solid #404040 1px;
-    border-radius: 4px;
-    height: 16px;
     width: 16px;
+    height: 16px;
+    background-image: linear-gradient(#A1F0EC, #A1F0EC);
+    border-radius: 4px;
+    border: solid #404040 1px;
 }
 .ui-button .ui-icon.colorButton3Icon {
-    background-image: linear-gradient(#869BD9, #869BD9);
-    border: solid #404040 1px;
-    border-radius: 4px;
-    height: 16px;
     width: 16px;
+    height: 16px;
+    background-image: linear-gradient(#869BD9, #869BD9);
+    border-radius: 4px;
+    border: solid #404040 1px;
 }
 .ui-button .ui-icon.colorButton4Icon {
-    background-image: linear-gradient(#D6A5FA, #D6A5FA);
-    border: solid #404040 1px;
-    border-radius: 4px;
-    height: 16px;
     width: 16px;
+    height: 16px;
+    background-image: linear-gradient(#D6A5FA, #D6A5FA);
+    border-radius: 4px;
+    border: solid #404040 1px;
 }
 
 #feedbackLecturerContent {
@@ -253,10 +268,10 @@ body { background: white; color: #000000; font-family: 'IBM Plex Sans', sans-ser
 }
 
 #studentTools {
-    background: #555555;
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
+    background: #555555;
     padding: 10px;
 }
 
@@ -268,18 +283,18 @@ body { background: white; color: #000000; font-family: 'IBM Plex Sans', sans-ser
 }
 
 #studentSortingSelect-button {
-    margin: 0px 10px 0px 10px;
     /*-webkit-box-shadow: 1px 5px 5px #A0A0a0;
    box-shadow: 1px 5px 5px #A0A0a0;   */
     width: 9em;
+    margin: 0px 10px 0px 10px;
 }
 
 #eventNoHeader {
+    display: inline-block;
     background: #555555;
     color: white;
-    display: inline-block;
-    padding-bottom: 10px;
     padding-top: 10px;
+    padding-bottom: 10px;
     width: 100%;
 }
 
@@ -293,8 +308,8 @@ body { background: white; color: #000000; font-family: 'IBM Plex Sans', sans-ser
 }
 
 #menu {
-    margin-bottom: 10px;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #footer {
@@ -307,8 +322,8 @@ body { background: white; color: #000000; font-family: 'IBM Plex Sans', sans-ser
 }
 
 .mySubTitle {
-    display: block;
     margin-top: 5px;
+    display: block;
     /*font-weight: bold;*/
 }
 
@@ -317,29 +332,29 @@ body { background: white; color: #000000; font-family: 'IBM Plex Sans', sans-ser
 }
 
 #loadingMaskID {
-  background: rgba(0,0,0,0.25);
+  width: 100%;
   height: 100%;
-  margin: 0px;
-  overflow: hidden;
+  z-index: 9000;
   padding: 0px;
+  margin: 0px;
+  background: rgba(0,0,0,0.25);
   position: fixed;
   top: 0px;
-  width: 100%;
-  z-index: 9000;
+  overflow: hidden;
 }
 .loadingMaskHidden {
   display: none;
-  height: 0px;
   visibility:hidden;
+  height: 0px; 
   width: 0px;
 }
 
 .overlayLoadingImg {
+   width:64px;
    height:64px;
-   left: 50%;
-   margin-left: -32px;
-   margin-top: -32px;
    position: absolute;
    top: 35%;
-   width:64px;
+   left: 50%;
+   margin-top: -32px; 
+   margin-left: -32px; 
 }
